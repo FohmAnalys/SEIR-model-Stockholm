@@ -19,7 +19,7 @@ heading <- "
 # R version:    3.5.2
 #
 # What the script does: This script estimates the parameters of the infectivity described in the report 
-#                       'Skattning av peakdagen och antal infekterade i covid-19-utbrottet i Stockholms län'.
+#                       'Skattning av peakdagen och antal infekterade i covid-19-utbrottet i Stockholms lï¿½n'.
 #                       With these we are able to estimate the number of infectious individuals at different time points, 
 #                       the cumulative number of infected, and the estimated effective basic reproduction number. 
 #                       If you want to reproduce the results obtained, or change anything, first write the  
@@ -119,8 +119,8 @@ load(file.path(data.path, "Sverige_population_2019.Rdata"))
 Region_population <- dat_pop_region_totalt
 r_name            <- levels(Region_population$ARegion)
 
-region_namn <- unlist(strsplit(r_name, split="s län"))
-region_namn <- unlist(strsplit(region_namn, split=" län"))
+region_namn <- unlist(strsplit(r_name, split="s lÃ¤n"))
+region_namn <- unlist(strsplit(region_namn, split=" lÃ¤n"))
 region_namn <- region_namn[-which(region_namn == "Riket")]
 
 Region_population$ARegion <- region_namn
@@ -186,7 +186,7 @@ Estimate_function_Stockholm_only_local <- function(p_symp = 0.5, p_lower_inf = 0
   ## The time-dependent infectivity rate 
   beta_decrease <- function(t, delta, epsilon, theta){
     
-    t_b <- as.numeric(as.Date("2020-03-16")) - as.numeric(as.Date("2019-12-31")) # dagen för jobba hemma
+    t_b <- as.numeric(as.Date("2020-03-16")) - as.numeric(as.Date("2019-12-31")) # dagen fï¿½r jobba hemma
     
     res <- ((1-delta)/(1+exp(epsilon*(-(t-t_b)))) + delta)* theta 
     
@@ -388,7 +388,7 @@ fit_cum_inf <- N - fit_S
 
 
 
-## The mean prevalence same days as the Hälsorapport Stockholmsstudien (27th March to 3rd April)
+## The mean prevalence same days as the Hï¿½lsorapport Stockholmsstudien (27th March to 3rd April)
 Smittsamma         <- fit_I_symp + fit_I_asymp #+ fit_E
 SmittsammaF <-  Smittsamma[40:47]
 mean(SmittsammaF/N)
