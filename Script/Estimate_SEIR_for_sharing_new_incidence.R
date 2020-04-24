@@ -19,7 +19,7 @@ heading <- "
 # R version:    3.5.2
 #
 # What the script does: This script estimates the parameters of the infectivity described in the report 
-#                       'Skattning av peakdagen och antal infekterade i covid-19-utbrottet i Stockholms l�n'.
+#                       'Skattning av peakdagen och antal infekterade i covid-19-utbrottet i Stockholms län'.
 #                       With these we are able to estimate the number of infectious individuals at different time points, 
 #                       the cumulative number of infected, and the estimated effective basic reproduction number. 
 #                       If you want to reproduce the results obtained, or change anything, first write the  
@@ -186,7 +186,7 @@ Estimate_function_Stockholm_only_local <- function(p_symp = 0.5, p_lower_inf = 0
   ## The time-dependent infectivity rate 
   beta_decrease <- function(t, delta, epsilon, theta){
     
-    t_b <- as.numeric(as.Date("2020-03-16")) - as.numeric(as.Date("2019-12-31")) # dagen f�r jobba hemma
+    t_b <- as.numeric(as.Date("2020-03-16")) - as.numeric(as.Date("2019-12-31")) # dagen får jobba hemma
     
     res <- ((1-delta)/(1+exp(epsilon*(-(t-t_b)))) + delta)* theta 
     
@@ -388,7 +388,7 @@ fit_cum_inf <- N - fit_S
 
 
 
-## The mean prevalence same days as the H�lsorapport Stockholmsstudien (27th March to 3rd April)
+## The mean prevalence same days as the Hälsorapport Stockholmsstudien (27th March to 3rd April)
 Smittsamma         <- fit_I_symp + fit_I_asymp #+ fit_E
 SmittsammaF <-  Smittsamma[40:47]
 mean(SmittsammaF/N)
